@@ -11,7 +11,7 @@ export class TravelService {
 
   static API_URL = "https://angular-eval.herokuapp.com/api/v1/";
 
-  static token: string;
+  token: string;
 
   constructor(private http: HttpClient) {
   }
@@ -20,7 +20,7 @@ export class TravelService {
    * Method for retrieve all the travels from the API
    */
   getTravels(): Promise<Array<Travel>> {
-    let headers = TravelService.getDefaultHeader();
+    let headers = this.getDefaultHeader();
     return this.http
       .get(TravelService.API_URL + 'offers', {headers})
       .pipe(
@@ -34,13 +34,13 @@ export class TravelService {
   getTravel(id: string): Promise<any> {
     return new Promise(
       (res, rej) => {
-        let headers = TravelService.getDefaultHeader();
+        let headers = this.getDefaultHeader();
 
         this.http
-          .get(TravelService.API_URL + 'offer/' + id, {headers})
+          .get(TravelService.API_URL + 'offers/' + id, {headers})
           .subscribe(
             (travel: any) => {
-              res(Travel.fromJSON(travel));
+              res(Travel.fromJSON(travel.offer));
             },
             err => {
               console.error(err);
@@ -60,7 +60,7 @@ export class TravelService {
     return new Promise(
       (res, rej) => {
 
-        let headers = TravelService.getDefaultHeader();
+        let headers = this.getDefaultHeader();
 
         this.http
           .post(TravelService.API_URL + 'login', user.toJSON(), {headers})
@@ -68,7 +68,7 @@ export class TravelService {
             (info: any) => {
               console.info(info);
 
-              TravelService.token = info.token;
+              this.token = info.token;
 
               res(info);
             },
@@ -92,7 +92,7 @@ export class TravelService {
     return new Promise(
       (res, rej) => {
 
-        let headers = TravelService.getDefaultHeader();
+        let headers = this.getDefaultHeader();
 
         this.http
           .post(TravelService.API_URL + 'register', user, {headers})
@@ -101,7 +101,7 @@ export class TravelService {
               console.info(info);
 
               // Set the  token
-              TravelService.token = info.token;
+              this.token = info.token;
 
               res(info);
             },
@@ -118,7 +118,7 @@ export class TravelService {
   /**
    * Return the default header
    */
-  private static getDefaultHeader(): HttpHeaders {
+  private getDefaultHeader(): HttpHeaders {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     if (this.token) {

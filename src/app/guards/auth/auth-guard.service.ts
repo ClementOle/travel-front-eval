@@ -8,7 +8,8 @@ import {TravelService} from "../../services/travel/travel.service";
 })
 export class AuthGuardService {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private travelService: TravelService) {
   }
 
   /**
@@ -17,7 +18,7 @@ export class AuthGuardService {
    * @param state The state param
    */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (TravelService.token) {
+    if (this.travelService.token) {
       return true;
     }
 

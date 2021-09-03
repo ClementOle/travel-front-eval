@@ -11,7 +11,8 @@
         <div class="card border-0">
           <div class="card-body">
             <h5 class="card-title">{{travel.name}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Voyage du {{travel.dateBegin | date}} au {{travel.dateEnd}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Voyage du {{travel.dateBegin | date: 'dd/MM/yyyy'}}
+              au {{travel.dateEnd | date: 'dd/MM/yyyy'}}</h6>
             <p class="card-text">
               {{travel.description}}
             </p>
