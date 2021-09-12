@@ -11,6 +11,11 @@ import {LoginViewComponent} from "./views/login-view/login-view.component";
 import {AuthFormComponent} from "./components/auth-form/auth-form.component";
 import {TravelService} from "./services/travel/travel.service";
 import {AuthGuardService} from "./guards/auth/auth-guard.service";
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AddTravelViewComponent } from './views/add-travel-view/add-travel-view.component';
+import { AddTravelFormComponent } from './components/add-travel-form/add-travel-form.component';
+import { ErrorsFormComponent } from './components/errors-form/errors-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import {AuthGuardService} from "./guards/auth/auth-guard.service";
     TravelDetailComponent,
     TravelListComponent,
     LoginViewComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    HeaderComponent,
+    FooterComponent,
+    AddTravelViewComponent,
+    AddTravelFormComponent,
+    ErrorsFormComponent
   ],
   imports: [
     BrowserModule,

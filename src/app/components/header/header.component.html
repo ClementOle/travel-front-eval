@@ -1,0 +1,14 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex frex-wrap align-items-center justify-content-around">
+      <a routerLink="/" class="text-white text-decoration-node">
+        Travel Agency
+      </a>
+
+      <div *ngIf="this.token" class="text-end">
+        <button [routerLink]="['travel', 'new']" class="btn btn-outline-light me-2">Nouveau voyage</button>
+        <button (click)="onLogout()" class="btn btn-outline-light me-2">Déconnexion</button>
+      </div>
+    </div>
+  </div>
+</header>

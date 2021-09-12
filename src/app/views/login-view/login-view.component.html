@@ -9,11 +9,6 @@
           <div *ngIf="errorMsg" class="text-center text-danger m-1">{{errorMsg}}</div>
 
           <app-auth-form label="Se connecter" (onFormSubmitted)="onSignIn($event)"></app-auth-form>
-
-          <div class="mt-4 text-center">
-            <a routerLink="/register" class="text-dark"><u>Pas encore inscrit ? C'est le moment !</u></a>
-          </div>
-
         </div>
       </div>
     </div>

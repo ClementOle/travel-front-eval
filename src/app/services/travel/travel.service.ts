@@ -2,18 +2,18 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Travel} from "../../models/travel.model";
 import {map} from "rxjs/operators";
-import {User} from "../../models/user.model";
+import {AuthService} from "../auth/auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TravelService {
 
-  static API_URL = "https://angular-eval.herokuapp.com/api/v1/";
+  public static API_URL = "https://angular-eval.herokuapp.com/api/v1/";
 
-  token: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private authService: AuthService) {
   }
 
   /**
@@ -51,68 +51,17 @@ export class TravelService {
     );
   }
 
-  /**
-   * Method for try to login the user
-   * @param user
-   */
-  login(user: User): Promise<any> {
+  addTravel(travel: Travel): Promise<any> {
+    let headers = this.getDefaultHeader();
 
-    return new Promise(
-      (res, rej) => {
-
-        let headers = this.getDefaultHeader();
-
-        this.http
-          .post(TravelService.API_URL + 'login', user.toJSON(), {headers})
-          .subscribe(
-            (info: any) => {
-              console.info(info);
-
-              this.token = info.token;
-
-              res(info);
-            },
-            err => {
-              console.error(err);
-              rej(err.error?.errorMsg);
-            }
-          );
-
-      }
-    );
-
-  }
-
-  /**
-   * Method for try to register the user
-   * @param user
-   */
-  register(user: any): Promise<any> {
-
-    return new Promise(
-      (res, rej) => {
-
-        let headers = this.getDefaultHeader();
-
-        this.http
-          .post(TravelService.API_URL + 'register', user, {headers})
-          .subscribe(
-            (info: any) => {
-              console.info(info);
-
-              // Set the  token
-              this.token = info.token;
-
-              res(info);
-            },
-            err => {
-              console.error(err);
-              rej(err.error.errorMsg);
-            }
-          );
-
-      }
-    );
+    return this.http
+      .post(TravelService.API_URL + 'offers/new', travel.toJSON(), {headers})
+      .pipe(
+        map((res: any) => {
+          return Travel.fromJSON(res.offer);
+        })
+      )
+      .toPromise();
   }
 
   /**
@@ -121,8 +70,8 @@ export class TravelService {
   private getDefaultHeader(): HttpHeaders {
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
-    if (this.token) {
-      headers = headers.append('Authorization', this.token);
+    if (this.authService.token.getValue()) {
+      headers = headers.append('Authorization', this.authService.token.getValue());
     }
     return headers;
   }

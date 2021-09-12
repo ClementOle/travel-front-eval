@@ -37,7 +37,7 @@
 
   <button class="btn btn-lg btn-dark btn-block text-uppercase"
           type="submit"
-          [disabled]="authForm.invalid">
+          [disabled]="authForm.invalid && (authForm.dirty || authForm.touched)">
     {{label}}
   </button>
 

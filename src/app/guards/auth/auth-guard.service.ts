@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {TravelService} from "../../services/travel/travel.service";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import {TravelService} from "../../services/travel/travel.service";
 export class AuthGuardService {
 
   constructor(private router: Router,
-              private travelService: TravelService) {
+              private authService: AuthService) {
   }
 
   /**
@@ -18,7 +18,7 @@ export class AuthGuardService {
    * @param state The state param
    */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.travelService.token) {
+    if (this.authService.token.getValue()) {
       return true;
     }
 

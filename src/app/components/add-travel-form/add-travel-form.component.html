@@ -1,0 +1,46 @@
+<form (ngSubmit)="onSubmitForm()" [formGroup]="form">
+  <div class="form-group">
+    <label for="name">
+      Nom
+    </label>
+    <input type="text" id="name" class="form-control" formControlName="name" [(ngModel)]="travel.name"/>
+
+    <app-errors-form [control]="form.controls.name" controlLabel="Nom du voyage"></app-errors-form>
+
+  </div>
+  <div class="form-group">
+    <label for="description">
+      Description du voyage
+    </label>
+    <textarea id="description" class="form-control" formControlName="description" [(ngModel)]="travel.description"></textarea>
+
+    <app-errors-form [control]="form.controls.description" controlLabel="Description du voyage"></app-errors-form>
+  </div>
+  <div class="form-group">
+    <label for="imgUrl">
+      Lien de l'image
+    </label>
+    <input type="url" id="imgUrl" class="form-control" formControlName="imgUrl" [(ngModel)]="travel.imgUrl"/>
+    <app-errors-form [control]="form.controls.imgUrl" controlLabel="Lien de l'image"></app-errors-form>
+  </div>
+  <div class="form-group">
+    <label for="dateBegin">
+      Date de début
+      {{travel.dateBegin}}
+    </label>
+    <input type="date" id="dateBegin" class="form-control" formControlName="dateBegin" [(ngModel)]="travel.dateBegin"/>
+    <app-errors-form [control]="form.controls.dateBegin" controlLabel="Date de début"></app-errors-form>
+  </div>
+  <div class="form-group">
+    <label for="dateEnd">
+      Date de fin {{travel.dateEnd}}
+    </label>
+    <input type="date" id="dateEnd" class="form-control" formControlName="dateEnd" [(ngModel)]="travel.dateEnd"/>
+    <app-errors-form [control]="form.controls.dateEnd" controlLabel="Date de fin"></app-errors-form>
+  </div>
+  <button type="submit"
+          class="btn btn-dark btn-lg text-uppercase m-3"
+          [disabled]="form.invalid && (form.dirty || form.touched)">
+    ENREGISTRER
+  </button>
+</form>

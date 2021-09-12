@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user.model';
 import {Router} from '@angular/router';
-import {TravelService} from "../../services/travel/travel.service";
+import {AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-login-view',
@@ -12,7 +12,7 @@ export class LoginViewComponent implements OnInit {
 
   errorMsg: string;
 
-  constructor(private travelService: TravelService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class LoginViewComponent implements OnInit {
    * Method called when user submit login form
    */
   onSignIn(user: User): void {
-    this.travelService.login(user)
+    this.authService.login(user)
       .then(() => {
         this.router.navigate(['sales']);
       }, (err) => {
