@@ -51,7 +51,7 @@ export class AuthService {
    */
   logout(): Promise<void> {
     return new Promise<void>(
-      (res, rej) => {
+      (res) => {
         this.token.next('');
         res();
       }

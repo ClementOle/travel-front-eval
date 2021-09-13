@@ -3,6 +3,7 @@
   <div *ngFor="let row of rows; index as iR" class="row">
 
     <div *ngFor="let col of cols; index as iC" class="col card m-3 shadow">
+      <ng-container *ngIf="this.travels[getTravelIndex(iR, iC)]">
       <img [src]="this.travels[getTravelIndex(iR, iC)].imgUrl" class="card-img-top" style="max-height: 400px">
       <div class="card-body">
         <h5 class="card-title">{{ this.travels[getTravelIndex(iR, iC)].name }}</h5>
@@ -20,7 +21,7 @@
            class="btn btn-danger mx-1">SUPPRIMER.</a>
 
       </div>
-
+      </ng-container>
     </div>
 
   </div>
