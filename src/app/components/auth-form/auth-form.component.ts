@@ -10,7 +10,7 @@ import {User} from '../../models/user.model';
 export class AuthFormComponent implements OnInit {
 
   @Input() label: string;
-  @Output() onFormSubmitted: EventEmitter<any>;
+  @Output() formSubmitEvent: EventEmitter<any>;
 
   authForm: FormGroup;
 
@@ -18,7 +18,7 @@ export class AuthFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.user = new User('', ' ');
-    this.onFormSubmitted = new EventEmitter<any>();
+    this.formSubmitEvent = new EventEmitter<any>();
   }
 
   ngOnInit(): void {
@@ -40,6 +40,6 @@ export class AuthFormComponent implements OnInit {
    * Method called when user submit the form
    */
   onSubmit(): void {
-    this.onFormSubmitted.emit(this.user);
+    this.formSubmitEvent.emit(this.user);
   }
 }

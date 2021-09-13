@@ -8,7 +8,7 @@
 
           <div *ngIf="errorMsg" class="text-center text-danger m-1">{{errorMsg}}</div>
 
-          <app-auth-form label="Se connecter" (onFormSubmitted)="onSignIn($event)"></app-auth-form>
+          <app-auth-form label="Se connecter" (formSubmitEvent)="onSignIn($event)"></app-auth-form>
         </div>
       </div>
     </div>

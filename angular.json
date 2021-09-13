@@ -100,9 +100,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "travel-front-eval"
+  "defaultProject": "travel-front-eval",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
