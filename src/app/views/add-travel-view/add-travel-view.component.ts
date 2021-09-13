@@ -18,6 +18,6 @@ export class AddTravelViewComponent implements OnInit {
 
   addTravel($event: Travel) {
     this.travelService.addTravel($event)
-      .then(value => this.router.navigate(['travel', value.id]))
+      .then(value => this.router.navigateByUrl("/"))
   }
 }

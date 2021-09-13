@@ -26,14 +26,13 @@
   <div class="form-group">
     <label for="dateBegin">
       Date de début
-      {{travel.dateBegin}}
     </label>
     <input type="date" id="dateBegin" class="form-control" formControlName="dateBegin" [(ngModel)]="travel.dateBegin"/>
     <app-errors-form [control]="form.controls.dateBegin" controlLabel="Date de début"></app-errors-form>
   </div>
   <div class="form-group">
     <label for="dateEnd">
-      Date de fin {{travel.dateEnd}}
+      Date de fin
     </label>
     <input type="date" id="dateEnd" class="form-control" formControlName="dateEnd" [(ngModel)]="travel.dateEnd"/>
     <app-errors-form [control]="form.controls.dateEnd" controlLabel="Date de fin"></app-errors-form>

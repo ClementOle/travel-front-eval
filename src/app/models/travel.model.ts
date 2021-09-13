@@ -2,15 +2,15 @@ export class Travel {
   private _id: string;
   private _name: string;
   private _description: string;
-  private _dateBegin: Date;
-  private _dateEnd: Date;
+  private _dateBegin: string;
+  private _dateEnd: string;
   private _imgUrl: string;
   private _creatorId: string;
   private _createdAt: Date;
   private _updatedAt: Date;
 
 
-  constructor(name: string, description: string, dateBegin: Date, dateEnd: Date, imgUrl: string, creatorId: string, createdAt?: Date, updatedAt?: Date, id?: string) {
+  constructor(name: string, description: string, dateBegin: string, dateEnd: string, imgUrl: string, creatorId: string, createdAt?: Date, updatedAt?: Date, id?: string) {
     if (id)
       this._id = id;
     this._name = name;
@@ -50,19 +50,19 @@ export class Travel {
     this._description = value;
   }
 
-  get dateBegin(): Date {
+  get dateBegin(): string {
     return this._dateBegin;
   }
 
-  set dateBegin(value: Date) {
+  set dateBegin(value: string) {
     this._dateBegin = value;
   }
 
-  get dateEnd(): Date {
+  get dateEnd(): string {
     return this._dateEnd;
   }
 
-  set dateEnd(value: Date) {
+  set dateEnd(value: string) {
     this._dateEnd = value;
   }
 

@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AddTravelViewComponent } from './views/add-travel-view/add-travel-view.component';
 import { AddTravelFormComponent } from './components/add-travel-form/add-travel-form.component';
 import { ErrorsFormComponent } from './components/errors-form/errors-form.component';
+import { EditTravelViewComponent } from './views/edit-travel-view/edit-travel-view.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ErrorsFormComponent } from './components/errors-form/errors-form.compon
     FooterComponent,
     AddTravelViewComponent,
     AddTravelFormComponent,
-    ErrorsFormComponent
+    ErrorsFormComponent,
+    EditTravelViewComponent
   ],
   imports: [
     BrowserModule,

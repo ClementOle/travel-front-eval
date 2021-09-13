@@ -9,7 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AddTravelFormComponent implements OnInit {
 
-  @Input() travel: Travel = new Travel('', '', new Date(), new Date(), '', '', new Date(), new Date());
+  @Input() travel: Travel;
 
   @Output() submitForm: EventEmitter<any> = new EventEmitter<any>();
 
@@ -19,6 +19,14 @@ export class AddTravelFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(!this.travel) {
+      this.travel = new Travel('', '', '', '', '', '', new Date(), new Date());
+    }
+
+    //Convert the string date in the good format
+    this.travel.dateBegin = this.travel.dateBegin.split('T')[0];
+    this.travel.dateEnd = this.travel.dateEnd.split('T')[0];
+
     this.initForm();
   }
 

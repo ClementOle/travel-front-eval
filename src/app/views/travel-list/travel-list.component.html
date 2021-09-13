@@ -3,7 +3,6 @@
   <div *ngFor="let row of rows; index as iR" class="row">
 
     <div *ngFor="let col of cols; index as iC" class="col card m-3 shadow">
-
       <img [src]="this.travels[getTravelIndex(iR, iC)].imgUrl" class="card-img-top" style="max-height: 400px">
       <div class="card-body">
         <h5 class="card-title">{{ this.travels[getTravelIndex(iR, iC)].name }}</h5>
@@ -15,11 +14,9 @@
       <div class="d-flex justify-content-end mb-4">
         <a [routerLink]="['travel', this.travels[getTravelIndex(iR, iC)].id]"
            class="btn btn-outline-primary mx-1">DÉTAILS.</a>
+        <a [routerLink]="['travel/edit', this.travels[getTravelIndex(iR, iC)].id]"
+           class="btn btn-outline-primary mx-1">MODIFIER.</a>
 
-        <!--        <a [routerLink]="['posts', this.posts[getPostIndex(iR, iC)].id, 'edit']" class="btn btn-outline-warning mx-1">MODIF.</a>
-                <button (click)="onClickDeletePost(this.posts[getPostIndex(iR, iC)].id)" class="btn btn-outline-danger mx-1">
-                  SUPP.
-                </button>-->
       </div>
 
     </div>

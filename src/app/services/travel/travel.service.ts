@@ -58,10 +58,22 @@ export class TravelService {
       .post(TravelService.API_URL + 'offers/new', travel.toJSON(), {headers})
       .pipe(
         map((res: any) => {
-          return Travel.fromJSON(res.offer);
+          return Travel.fromJSON(res.offers);
         })
       )
       .toPromise();
+  }
+
+  editTravel(travel: Travel): Promise<any> {
+    let headers = this.getDefaultHeader();
+    return this.http.post(TravelService.API_URL + 'edit/' + travel.id, travel.toJSON(), {headers})
+      .pipe(
+        map((res: any) => {
+          return Travel.fromJSON(res.offers);
+        })
+      )
+      .toPromise();
+    ;
   }
 
   /**

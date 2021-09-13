@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row col card m-3 shadow">
+    <div class="card-boddy">
+      <h3 class="card-title text-center">Modification du voyage</h3>
+      <app-add-travel-form
+        *ngIf="travel"
+        [travel]="travel"
+        (submitForm)="editTravel($event)">
+      </app-add-travel-form>
+    </div>
+  </div>
+</div>
