@@ -35,20 +35,16 @@ export class TravelListComponent implements OnInit {
     return iR * this.nbCols + iC;
   }
 
-  /*
-    onClickDeleteTravel(id: number) {
-
-      this.travelService
-        .deleteTravel(id)
-        .then(() => {
-          for (let i = 0; i < this.travels.length - 1; i++) {
-            if (this.travels[i].id === id) {
-              this.travels.splice(i, 1);
-              break;
-            }
+  onClickDelete(id: string) {
+    this.travelService
+      .deleteTravel(id)
+      .then(() => {
+        for (let i = 0; i < this.travels.length - 1; i++) {
+          if (this.travels[i].id === id) {
+            this.travels.splice(i, 1);
+            break;
           }
-        });
-
-    }*/
-
+        }
+      });
+  }
 }

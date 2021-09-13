@@ -31,6 +31,10 @@ export class TravelService {
       .toPromise();
   }
 
+  /**
+   * Method for retrieve one travels from the API
+   * @param id id of the travel
+   */
   getTravel(id: string): Promise<any> {
     return new Promise(
       (res, rej) => {
@@ -51,6 +55,10 @@ export class TravelService {
     );
   }
 
+  /**
+   * Method for adding a travel
+   * @param travel
+   */
   addTravel(travel: Travel): Promise<any> {
     let headers = this.getDefaultHeader();
 
@@ -64,16 +72,30 @@ export class TravelService {
       .toPromise();
   }
 
+  /**
+   * Method for update a travel
+   * @param travel
+   */
   editTravel(travel: Travel): Promise<any> {
     let headers = this.getDefaultHeader();
-    return this.http.post(TravelService.API_URL + 'edit/' + travel.id, travel.toJSON(), {headers})
+    return this.http.put(TravelService.API_URL + 'edit/' + travel.id, travel.toJSON(), {headers})
       .pipe(
         map((res: any) => {
           return Travel.fromJSON(res.offers);
         })
       )
       .toPromise();
-    ;
+  }
+
+  /**
+   * Method for delete a travel
+   * @param id
+   */
+  deleteTravel(id: string): Promise<any> {
+    let headers = this.getDefaultHeader();
+
+    return this.http.delete(TravelService.API_URL + 'offers/delete/' + id, {headers})
+      .toPromise();
   }
 
   /**

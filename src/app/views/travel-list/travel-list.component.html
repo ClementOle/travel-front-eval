@@ -16,6 +16,8 @@
            class="btn btn-outline-primary mx-1">DÉTAILS.</a>
         <a [routerLink]="['travel/edit', this.travels[getTravelIndex(iR, iC)].id]"
            class="btn btn-outline-primary mx-1">MODIFIER.</a>
+        <a (click)="onClickDelete(this.travels[getTravelIndex(iR, iC)].id)"
+           class="btn btn-danger mx-1">SUPPRIMER.</a>
 
       </div>
 
