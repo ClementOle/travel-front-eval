@@ -32,7 +32,7 @@ export class TravelService {
   }
 
   /**
-   * Method for retrieve one travels from the API
+   * Method for retrieve one travel from the API
    * @param id id of the travel
    */
   getTravel(id: string): Promise<any> {
